@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>WORD CHAIN</h1>
+        
+        <!-- Home Screen: Only shows the PLAY button -->
+        <div id="homeScreen">
+            <button onclick="startGame()">PLAY</button>
+        </div>
+
+        <!-- Game Screen: Only shows the input and Submit button -->
+        <div id="gameScreen" style="display: none;">
+            <div class="header-icons">
+                <img src="typewriter.png.jpeg" alt="Typewriter" class="icon">
+                <img src="featherpen.png.webp" alt="Featherpen" class="icon">
+            </div>
+            
+            <div id="timer">Time Left: 10s</div>
+            <div id="scoreDisplay">Score: 0</div>
+            <div id="message">Enter a word to start!</div>
+            
+            <!-- Wrapped in a form so pressing Enter or clicking Submit works automatically -->
+            <form onsubmit="handleFormSubmit(event)">
+                <input type="text" id="wordInput" placeholder="TYPE HERE...">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <!-- Game Over Screen: Shows final score and restart button -->
+        <div id="gameOverScreen" style="display: none; text-align: center; padding: 20px;">
+            <h2>Game Over!</h2>
+            <p id="gameOverReason" style="font-size: 1.1em; color: #b22222; margin-bottom: 10px;"></p>
+            <p style="font-size: 1.3em; margin-bottom: 20px;"><strong>Final Score: <span id="finalScoreDisplay">0</span></strong></p>
+            <button onclick="startGame()" style="padding: 10px 20px; font-size: 1em; cursor: pointer;">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Load your logic here -->
+    <script src="script.js"></script>
+</body>
+</html>

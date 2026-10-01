@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="game-container">
+    <h1>Word Chain</h1>
+    
+    <!-- This "Play" view appears at the start -->
+    <div id="homeScreen">
+        <button onclick="startGame()">PLAY</button>
+    </div>
+
+    <!-- This "Game" view appears after clicking Play -->
+    <div id="gameScreen" style="display: none;">
+        <div id="scoreDisplay">Score: 0</div>
+        
+        <div id="message">Enter a word to start!</div>
+        <input type="text" id="wordInput" placeholder="TYPE HERE..." onkeypress="handleKeyPress(event)">
+        <button onclick="handleInput()">Submit</button>
+    </div>
+</div>
+    <script src="script.js"></script>
+    <script>
+        function handleInput() {
+            let inputField = document.getElementById("wordInput"); // Get the element
+            let input = inputField.value; // Get the text
+            
+            let result = validateAndAdd(input);
+            let msgBox = document.getElementById("message");
+            
+            if (result.valid) {
+                msgBox.innerText = "Valid! Next word starts with: " + result.nextChar;
+            } else {
+                msgBox.innerText = result.message;
+            }
+
+            // THESE TWO LINES ARE WHAT YOU WERE MISSING:
+            inputField.value = ""; 
+            inputField.focus();
+        }
+    </script>
+</body>
+</html>
